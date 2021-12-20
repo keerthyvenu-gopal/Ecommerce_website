@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>Cart</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'hm/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'hm/bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'hm/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'hm/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'hm/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'hm/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'hm/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'hm/css/responsive.css' %}">
+
+</head>
+<body>
+
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+<!--					<h3>Shopify</h3>-->
+
+						<!-- menu start -->
+
+
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+
+
+
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Cart</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- cart -->
+	<div class="cart-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									<th class="product-remove"></th>
+									<th class="product-image">Product Image</th>
+									<th class="product-name">Name</th>
+									<th class="product-price">Price</th>
+									<th class="product-quantity">Quantity</th>
+									<th class="product-total">Total</th>
+								</tr>
+							</thead>
+
+							<tbody>
+							<tr class="table-body-row">
+								{% for i in ci %}
+							<td class="product-remove"><a href="{% url 'removecart' i.prod.id %}"<i class="far fa-window-close"></i></a></td>
+							<td class="product-image" ><a href="{{i.prod.get_url}}"><img src="{{i.prod.img.url}}" alt="{{i.prod.name}}"></a></td>
+							<td class="product-name"><a href="{{i.prod.get_url}}">{{i.prod.name}}</a></td>
+							<td class="product-price">Rs {{i.prod.price}}</td>
+							<td class="product-quantity">{{i.quan}}<br><a href="{% url 'addcart' i.prod.id %}"><i class="fa fa-plus" style="font-size:14px;color:blue"></i></a> &nbsp;&nbsp;<a href="{% url 'cart_decrement' i.prod.id %}"> <i class="fa fa-minus" style="font-size:14px;color:blue"></i></a></td>
+							<td class="product-total">Rs {{i.total}}</td>
+
+								</tr>
+							{% endfor %}
+							</tbody>
+
+
+						</table>
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="total-section">
+						<table class="total-table">
+							<thead class="total-table-head">
+								<tr class="table-total-row">
+									<th>Total Amount</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr class="total-data">
+									<td><strong>Total to be paid: </strong></td>
+									<td>Rs {{t}}</td>
+								</tr>
+							</tbody>
+						</table>
+
+	<!-- jquery -->
+	<script src="{% static 'hm/js/jquery-1.11.3.min.js' %}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'hm/bootstrap/js/bootstrap.min.js' %}"></script>
+	<!-- count down -->
+	<script src="{% static 'hm/js/jquery.countdown.js' %}"></script>
+	<!-- isotope -->
+	<script src="{% static 'hm/js/jquery.isotope-3.0.6.min.js' %}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'hm/js/waypoints.js' %}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'hm/js/owl.carousel.min.js' %}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'hm/js/jquery.magnific-popup.min.js' %}"></script>
+	<!-- mean menu -->
+	<script src="{% static 'hm/js/jquery.meanmenu.min.js' %}"></script>
+	<!-- sticker js -->
+	<script src="{% static 'hm/js/sticker.js' %}"></script>
+	<!-- main js -->
+	<script src="{% static 'hm/js/main.js' %}"></script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+{% endblock %}

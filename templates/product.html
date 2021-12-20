@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>Product View</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'pr/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<!--<div class="bgded overlay light" style="background-image:url({% static 'pr/images/backgrounds/01.png' %});">-->
+  <!-- ################################################################################################ -->
+
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+    <nav class="navbar navbar-dark bg-dark">
+<!-- Navbar content -->
+    </nav>
+
+  <div class="wrapper row3">
+  <main class="hoc container clear">
+
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+
+      <div class="sectiontitle">
+      <h6 class="heading" style="color:orange" >VIEW PRODUCTS</h6>
+    </div>
+    <article class="group">
+      <div class="one_half first">
+        <h6 class="heading">{{pr.name}}</h6>
+        <p>{{pr.desc}}.</p>
+        <p>Stock left: {{pr.stock}}</p>
+        <p> Price: Rs {{pr.price}} </p>
+
+      </div>
+      <div class="one_half"><img src="{{pr.img.url}}" alt="" style="height:300px;width:300px;"></div>
+{% if pr.stock <= 0 %}
+                    <h1 style="color:red">Sorry,No stock</h1>
+      {% else %}
+      <footer><a href="{% url 'addcart' pr.id %}"class="btn" style="color:brown" href="#">Add to Cart</a></footer>
+{% endif %}
+    </article>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- JAVASCRIPTS -->
+<script src="{% static 'pr/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'pr/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'pr/scripts/jquery.mobilemenu.js' %}"></script>
+</div>
+</body>
+</html>

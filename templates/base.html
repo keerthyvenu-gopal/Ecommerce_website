@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/"><!-- title -->
+
+	<title>Shopify</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="{% static 'hm/img/favicon.png' %}">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'hm/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'hm/bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'hm/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'hm/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'hm/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'hm/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'hm/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'hm/css/responsive.css' %}">
+
+</head>
+<body>
+<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="home.html">
+		     <!--	<h2>Shopify</h2>-->
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li><a href="{% url 'home' %}">Home</a></li>
+          						{% if user.is_authenticated %}
+							  	<li style="color:blue;">Hai, {{user.username}}</li>
+								<li><a href="{% url 'logout' %}">Logout</a></li>
+							  	{% else %}
+								<li><a href="{% url 'register' %}">Register</a></li>
+								<li><a href="{% url 'login' %}">Login</a></li>
+							  	{% endif %}
+
+		<li>
+		<div class="header-icons">
+		<a class="active" href="{% url 'cartdetails' %}">Cart <i class="fa fa-shopping-cart"></i> <b>{{itc}}</b></a>
+
+<!--	<a class="shopping-cart" href="{% url 'cartdetails' %}"><i class="fas fa-shopping-cart">&nbsp;{{itc}}</i></a>-->
+		<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+							<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<form action="{% url 'search' %}" method="get">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Enter item to search" name="q" required>
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+
+								</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+							</ul>
+						</nav>
+						</div>
+						</li>
+						</ul>
+						</nav>
+<!--<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>-->
+<!--						<div class="mobile-menu"></div>-->
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% block content %}
+{% endblock %}
+</body>
+</html>
